@@ -5,102 +5,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Vocabulary Master</title>
-
 <style>
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,"Noto Sans JP",sans-serif;
-  background:#f3f5fa;
-  color:#202b42;
-}
-header{
-  background:#243b67;color:white;
-  padding:25px 16px;text-align:center;
-}
+body{margin:0;font-family:Arial,"Noto Sans JP",sans-serif;background:#f3f5fa;color:#202b42}
+header{background:#243b67;color:white;padding:25px 16px;text-align:center}
 header h1{margin:0;font-size:25px}
 header p{margin:7px 0 0;color:#dce5fa;font-size:13px}
-nav{
-  display:flex;justify-content:center;flex-wrap:wrap;
-  gap:7px;background:white;padding:12px;
-  position:sticky;top:0;z-index:5;
-  box-shadow:0 2px 7px #0001;
-}
-button{
-  border:0;border-radius:9px;padding:11px 16px;
-  background:#e9edf5;color:#263753;
-  font-size:14px;font-weight:600;cursor:pointer;
-}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;background:white;padding:12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 7px #0001}
+button{border:0;border-radius:9px;padding:11px 16px;background:#e9edf5;color:#263753;font-size:14px;font-weight:600;cursor:pointer}
 button:hover{filter:brightness(.96)}
 button:disabled{opacity:.5;cursor:not-allowed}
 .primary{background:#315caa;color:white}
 .danger{background:#ffe5e5;color:#c03939}
 .active{background:#315caa;color:white}
 main{max-width:850px;margin:25px auto;padding:0 14px}
-.panel{
-  background:white;border-radius:15px;padding:22px;
-  box-shadow:0 3px 14px #182b4810;margin-bottom:18px;
-}
+.panel{background:white;border-radius:15px;padding:22px;box-shadow:0 3px 14px #182b4810;margin-bottom:18px}
 h2{font-size:20px;margin:0 0 17px}
 h3{font-size:16px}
 .hidden{display:none!important}
-.modes{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-}
-.mode{
-  min-height:125px;border:1px solid #e0e5ee;
-  background:white;border-radius:13px;padding:16px 8px;
-}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mode{min-height:125px;border:1px solid #e0e5ee;background:white;border-radius:13px;padding:16px 8px}
 .mode strong{display:block;font-size:17px;margin:8px 0}
 .mode span{font-size:12px;color:#71809a}
-.question{
-  text-align:center;font-size:27px;font-weight:700;
-  margin:30px 0;white-space:pre-wrap;
-}
+.question{text-align:center;font-size:27px;font-weight:700;margin:30px 0;white-space:pre-wrap;overflow-wrap:anywhere}
 .sub{text-align:center;color:#8290a5;font-size:13px;white-space:pre-wrap}
 .answer-area{max-width:550px;margin:20px auto}
-input,textarea{
-  width:100%;padding:12px;border:1px solid #ccd4e2;
-  border-radius:8px;font-size:16px;margin:6px 0 14px;
-  background:white;color:#202b42;
-}
-textarea{min-height:75px;resize:vertical}
+input,textarea{width:100%;padding:12px;border:1px solid #ccd4e2;border-radius:8px;font-size:16px;margin:6px 0 14px;background:white;color:#202b42}
+textarea{min-height:100px;resize:vertical}
 label{font-size:13px;font-weight:600}
-.actions{
-  display:flex;justify-content:center;gap:9px;
-  flex-wrap:wrap;margin-top:18px;
-}
+.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px}
 .result{text-align:center;font-size:20px;font-weight:700;margin:18px}
 .correct{color:#16834f}
 .wrong{color:#d34444}
-.choice{
-  display:block;width:100%;text-align:left;
-  margin:9px 0;background:#f0f3f9;
-}
+.choice{display:block;width:100%;text-align:left;margin:9px 0;background:#f0f3f9}
 .choice.correctChoice{background:#d9f4e6;color:#18794e}
-.choice.wrongChoice{background:#ffe5e5;color:#c03939}
-.stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
-}
-.stat{
-  background:#f1f4fa;padding:15px 5px;
-  border-radius:10px;text-align:center;
-}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:#f1f4fa;padding:15px 5px;border-radius:10px;text-align:center}
 .stat strong{display:block;font-size:25px;color:#315caa}
 .stat span{font-size:12px;color:#69788f}
-.progress{
-  height:9px;background:#e7ebf2;
-  border-radius:10px;overflow:hidden;margin:10px 0;
-}
+.progress{height:9px;background:#e7ebf2;border-radius:10px;overflow:hidden;margin:10px 0}
 .progress div{height:100%;background:#3baf7b}
-.item{
-  border:1px solid #e0e5ed;padding:13px;
-  border-radius:10px;margin:10px 0;
-}
-.item-top{
-  display:flex;justify-content:space-between;
-  gap:10px;align-items:center;
-}
+.item{border:1px solid #e0e5ed;padding:13px;border-radius:10px;margin:10px 0}
+.item-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
 .item small{color:#738198}
 .muted{color:#7a879b;font-size:13px}
 hr{border:0;border-top:1px solid #e8ebf1;margin:18px 0}
@@ -135,7 +81,6 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <section id="page-home">
   <div class="panel">
     <h2>学習モードを選択</h2>
-
     <div class="modes">
       <button class="mode" onclick="startQuiz('ja-en')">
         <div style="font-size:28px">✏️</div>
@@ -151,8 +96,8 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
       <button class="mode" onclick="startQuiz('grammar')">
         <div style="font-size:28px">📝</div>
-        <strong>③ 英文完成</strong>
-        <span>日本語を見て英文を完成</span>
+        <strong>③ 日本語 → 英文</strong>
+        <span>日本語の文章を英訳</span>
       </button>
     </div>
   </div>
@@ -180,7 +125,6 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <!-- クイズ -->
 <section id="page-quiz" class="hidden">
   <div class="panel">
-
     <div class="item-top">
       <span id="quiz-mode" class="muted">学習モード</span>
       <span id="quiz-count" class="muted">0 / 0</span>
@@ -195,11 +139,7 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
     <p id="hint" class="sub"></p>
 
     <div id="input-area" class="answer-area">
-      <input id="answer" type="text"
-        placeholder="答えを入力"
-        autocomplete="off"
-        onkeydown="if(event.key==='Enter')checkAnswer()">
-
+      <textarea id="answer" placeholder="答えを入力" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();checkAnswer()}"></textarea>
       <div class="actions">
         <button class="primary" onclick="checkAnswer()">回答する</button>
       </div>
@@ -238,7 +178,6 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
 <!-- 問題管理 -->
 <section id="page-manage" class="hidden">
-
   <div class="panel">
     <h2>問題の追加・編集</h2>
     <p class="muted">問題を登録すると自動保存されます。</p>
@@ -252,7 +191,6 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
     <div id="word-form">
       <h3>英単語を登録</h3>
-
       <label>英単語</label>
       <input id="word-en" placeholder="例：library">
 
@@ -266,19 +204,13 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
     </div>
 
     <div id="grammar-form" class="hidden">
-      <h3>英文法問題を登録</h3>
+      <h3>英文問題を登録</h3>
 
-      <label>日本語訳・問題文</label>
+      <label>日本語の文章（問題）</label>
       <textarea id="grammar-ja" placeholder="例：私は昨日、図書館に行きました。"></textarea>
 
-      <label>空欄を含む英文（空欄は ____ と入力）</label>
-      <input id="grammar-sentence" placeholder="例：I ____ to the library yesterday.">
-
-      <label>正解（空欄部分）</label>
-      <input id="grammar-answer" placeholder="例：went">
-
-      <label>ヒント（任意）</label>
-      <input id="grammar-hint" placeholder="例：go の過去形">
+      <label>正解の英文</label>
+      <textarea id="grammar-en" placeholder="例：I went to the library yesterday."></textarea>
 
       <div class="actions">
         <button class="primary" onclick="saveGrammar()">登録する</button>
@@ -295,7 +227,7 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
     <div class="actions">
       <button onclick="setListTab('word')" id="list-word" class="active">英単語一覧</button>
-      <button onclick="setListTab('grammar')" id="list-grammar">英文法一覧</button>
+      <button onclick="setListTab('grammar')" id="list-grammar">英文一覧</button>
     </div>
 
     <div id="question-list"></div>
@@ -372,6 +304,20 @@ function loadData(){
         grammar: Array.isArray(parsed.grammar) ? parsed.grammar : [],
         stats: parsed.stats || {}
       };
+
+      // 以前の空欄形式の英文問題を新形式に変換
+      data.grammar = data.grammar.map(q=>{
+        if(!q.en && q.sentence && q.answer){
+          return {
+            id:q.id,
+            ja:q.ja,
+            en:q.sentence.replace(/____/g,q.answer)
+          };
+        }
+        return q;
+      });
+
+      saveData();
     }
   }catch(e){
     alert("保存データを読み込めませんでした。");
@@ -392,26 +338,18 @@ function id(){
 
 function getStats(key){
   if(!data.stats[key]){
-    data.stats[key]={
-      attempts:0,
-      correct:0,
-      wrong:0
-    };
+    data.stats[key]={attempts:0,correct:0,wrong:0};
   }
   return data.stats[key];
 }
 
 function accuracy(s){
-  return s.attempts ? Math.round(s.correct/s.attempts*100) : 0;
+  return s.attempts?Math.round(s.correct/s.attempts*100):0;
 }
 
 function esc(s){
   return String(s??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   })[c]);
 }
 
@@ -422,15 +360,12 @@ function esc(s){
 const pages=["home","quiz","finish","manage","stats","weak"];
 
 function showPage(name){
-
   pages.forEach(p=>{
-    document.getElementById("page-"+p)
-      .classList.toggle("hidden",p!==name);
+    document.getElementById("page-"+p).classList.toggle("hidden",p!==name);
   });
 
   ["home","manage","stats","weak"].forEach(p=>{
-    document.getElementById("nav-"+p)
-      .classList.toggle("active",p===name);
+    document.getElementById("nav-"+p).classList.toggle("active",p===name);
   });
 
   if(name==="home")updateHome();
@@ -446,7 +381,6 @@ function showPage(name){
 // =====================================
 
 function updateHome(){
-
   document.getElementById("home-total").textContent=
     data.words.length+data.grammar.length;
 
@@ -458,7 +392,7 @@ function updateHome(){
   });
 
   document.getElementById("home-accuracy").textContent=
-    total ? Math.round(correct/total*100)+"%" : "--%";
+    total?Math.round(correct/total*100)+"%":"--%";
 
   document.getElementById("home-wrong").textContent=
     Object.values(data.stats).filter(s=>s.wrong>0).length;
@@ -475,15 +409,13 @@ let quizWrong=0;
 let answered=false;
 let lastMode="ja-en";
 let lastWrongOnly=false;
-
-let manageTab="word";
 let listTab="word";
 let editingId=null;
 
 const modeNames={
   "ja-en":"日本語 → 英語",
   "en-ja":"英語 → 日本語",
-  "grammar":"英文完成"
+  "grammar":"日本語 → 英文"
 };
 
 function startQuiz(mode,wrongOnly=false){
@@ -495,15 +427,11 @@ function startQuiz(mode,wrongOnly=false){
 
   queue=source.filter(q=>{
     const s=getStats(mode+":"+q.id);
-    return !wrongOnly || s.wrong>0;
+    return !wrongOnly||s.wrong>0;
   }).map(q=>({...q}));
 
   if(queue.length===0){
-    alert(
-      wrongOnly
-      ?"間違えた問題はありません！"
-      :"問題が登録されていません。問題管理から追加してください。"
-    );
+    alert(wrongOnly?"間違えた問題はありません！":"問題が登録されていません。問題管理から追加してください。");
     return;
   }
 
@@ -538,7 +466,6 @@ function showQuestion(){
 
   document.getElementById("feedback").textContent="";
   document.getElementById("feedback").className="result";
-
   document.getElementById("explanation").textContent="";
   document.getElementById("next-btn").classList.add("hidden");
 
@@ -581,18 +508,14 @@ function showQuestion(){
   if(lastMode==="grammar"){
 
     document.getElementById("quiz-type").textContent=
-      "英文を完成させてください";
+      "次の日本語を英語に訳してください";
 
     document.getElementById("question").textContent=q.ja;
 
-    hint.textContent=
-      (q.hint ? "ヒント："+q.hint+"\n" : "")+
-      "空欄部分だけ、または完成した英文全体を入力できます。";
+    hint.textContent="英文全体を入力してください。";
 
     input.classList.remove("hidden");
-
-    answer.placeholder="空欄の答え、または完成した英文を入力";
-
+    answer.placeholder="英文を入力してください";
     answer.focus();
   }
 }
@@ -605,43 +528,35 @@ function makeChoices(q){
 
   const others=data.words.filter(x=>x.id!==q.id);
 
-  const selected=others
-    .sort(()=>Math.random()-.5)
-    .slice(0,3);
-
-  const options=[q,...selected]
-    .sort(()=>Math.random()-.5);
+  const selected=others.sort(()=>Math.random()-.5).slice(0,3);
+  const options=[q,...selected].sort(()=>Math.random()-.5);
 
   const area=document.getElementById("choice-area");
   area.innerHTML="";
 
   options.forEach(option=>{
-
     const btn=document.createElement("button");
-
     btn.className="choice";
     btn.textContent=option.ja;
 
-    btn.onclick=()=>{
-      checkChoice(option.id===q.id,q,btn);
-    };
+    btn.onclick=()=>checkChoice(option.id===q.id,q);
 
     area.appendChild(btn);
   });
 }
 
 // =====================================
-// 回答判定（修正版）
+// 回答判定
 // =====================================
 
 function normalize(s){
-
   return String(s)
     .trim()
     .toLowerCase()
     .replace(/[’‘]/g,"'")
     .replace(/[。．]/g,".")
-    .replace(/\s+/g," ");
+    .replace(/\s+/g," ")
+    .replace(/[.!?]+$/,"");
 }
 
 function checkAnswer(){
@@ -649,7 +564,6 @@ function checkAnswer(){
   if(answered)return;
 
   const q=queue[current];
-
   const value=document.getElementById("answer").value.trim();
 
   if(!value){
@@ -660,37 +574,23 @@ function checkAnswer(){
   let correct=false;
 
   if(lastMode==="ja-en"){
-
     correct=normalize(value)===normalize(q.en);
+  }
 
-  }else if(lastMode==="grammar"){
-
-    const expectedWord=normalize(q.answer);
-
-    const completeSentence=normalize(
-      q.sentence.replace(/____/g,q.answer)
-    );
-
-    const userAnswer=normalize(value);
-
-    // 空欄部分だけの回答、または英文全体の回答を許可
-    correct=
-      userAnswer===expectedWord ||
-      userAnswer===completeSentence;
+  if(lastMode==="grammar"){
+    correct=normalize(value)===normalize(q.en);
   }
 
   recordAnswer(q,correct);
 }
 
-function checkChoice(correct,q,btn){
-
+function checkChoice(correct,q){
   if(answered)return;
-
   recordAnswer(q,correct);
 }
 
 // =====================================
-// 採点・解説（修正版）
+// 採点・解説
 // =====================================
 
 function recordAnswer(q,correct){
@@ -717,39 +617,24 @@ function recordAnswer(q,correct){
   const feedback=document.getElementById("feedback");
 
   feedback.textContent=correct?"正解！":"不正解";
-
-  feedback.className=
-    "result "+(correct?"correct":"wrong");
+  feedback.className="result "+(correct?"correct":"wrong");
 
   let explanation="";
 
   if(lastMode==="ja-en"){
-
     explanation="正解："+q.en;
-
   }else if(lastMode==="en-ja"){
-
     explanation="正解："+q.ja;
-
   }else if(lastMode==="grammar"){
-
-    const completed=q.sentence.replace(/____/g,q.answer);
-
-    explanation=
-      "正解："+q.answer+
-      "\n\n完成した英文：\n"+completed;
+    explanation="正解の英文：\n"+q.en;
   }
 
-  document.getElementById("explanation").textContent=
-    explanation;
+  document.getElementById("explanation").textContent=explanation;
 
-  // 選択肢を無効化
   if(lastMode==="en-ja"){
-
     const buttons=document.querySelectorAll("#choice-area button");
 
     buttons.forEach(b=>{
-
       b.disabled=true;
 
       if(b.textContent===q.ja){
@@ -758,12 +643,8 @@ function recordAnswer(q,correct){
     });
   }
 
-  // 入力欄を無効化
   document.getElementById("answer").disabled=true;
-
-  // 次の問題ボタンを表示
-  document.getElementById("next-btn")
-    .classList.remove("hidden");
+  document.getElementById("next-btn").classList.remove("hidden");
 }
 
 // =====================================
@@ -790,11 +671,8 @@ function finishQuiz(){
   document.getElementById("finish-score").textContent=
     quizCorrect+" / "+total;
 
-  document.getElementById("finish-correct").textContent=
-    quizCorrect;
-
-  document.getElementById("finish-wrong").textContent=
-    quizWrong;
+  document.getElementById("finish-correct").textContent=quizCorrect;
+  document.getElementById("finish-wrong").textContent=quizWrong;
 
   document.getElementById("finish-rate").textContent=
     Math.round(quizCorrect/total*100)+"%";
@@ -808,30 +686,19 @@ function finishQuiz(){
 
 function setManageTab(tab){
 
-  manageTab=tab;
+  document.getElementById("word-form").classList.toggle("hidden",tab!=="word");
+  document.getElementById("grammar-form").classList.toggle("hidden",tab!=="grammar");
 
-  document.getElementById("word-form")
-    .classList.toggle("hidden",tab!=="word");
-
-  document.getElementById("grammar-form")
-    .classList.toggle("hidden",tab!=="grammar");
-
-  document.getElementById("tab-word")
-    .classList.toggle("active",tab==="word");
-
-  document.getElementById("tab-grammar")
-    .classList.toggle("active",tab==="grammar");
+  document.getElementById("tab-word").classList.toggle("active",tab==="word");
+  document.getElementById("tab-grammar").classList.toggle("active",tab==="grammar");
 }
 
 function setListTab(tab){
 
   listTab=tab;
 
-  document.getElementById("list-word")
-    .classList.toggle("active",tab==="word");
-
-  document.getElementById("list-grammar")
-    .classList.toggle("active",tab==="grammar");
+  document.getElementById("list-word").classList.toggle("active",tab==="word");
+  document.getElementById("list-grammar").classList.toggle("active",tab==="grammar");
 
   renderList();
 }
@@ -847,21 +714,10 @@ function saveWord(){
   }
 
   if(editingId){
-
     const q=data.words.find(x=>x.id===editingId);
-
-    if(q){
-      q.en=en;
-      q.ja=ja;
-    }
-
+    if(q){q.en=en;q.ja=ja;}
   }else{
-
-    data.words.push({
-      id:id(),
-      en,
-      ja
-    });
+    data.words.push({id:id(),en,ja});
   }
 
   saveData();
@@ -875,20 +731,10 @@ function saveWord(){
 function saveGrammar(){
 
   const ja=document.getElementById("grammar-ja").value.trim();
+  const en=document.getElementById("grammar-en").value.trim();
 
-  const sentence=document.getElementById("grammar-sentence").value.trim();
-
-  const answer=document.getElementById("grammar-answer").value.trim();
-
-  const hint=document.getElementById("grammar-hint").value.trim();
-
-  if(!ja||!sentence||!answer){
-    alert("日本語訳・英文・正解を入力してください。");
-    return;
-  }
-
-  if(!sentence.includes("____")){
-    alert("英文に空欄を表す ____ を入れてください。");
+  if(!ja||!en){
+    alert("日本語の文章と正解の英文を入力してください。");
     return;
   }
 
@@ -898,9 +744,10 @@ function saveGrammar(){
 
     if(q){
       q.ja=ja;
-      q.sentence=sentence;
-      q.answer=answer;
-      q.hint=hint;
+      q.en=en;
+      delete q.sentence;
+      delete q.answer;
+      delete q.hint;
     }
 
   }else{
@@ -908,9 +755,7 @@ function saveGrammar(){
     data.grammar.push({
       id:id(),
       ja,
-      sentence,
-      answer,
-      hint
+      en
     });
   }
 
@@ -919,7 +764,7 @@ function saveGrammar(){
   renderList();
   updateHome();
 
-  alert("英文法問題を保存しました。");
+  alert("英文問題を保存しました。");
 }
 
 function clearWordForm(){
@@ -932,14 +777,8 @@ function clearWordForm(){
 
 function clearGrammarForm(){
 
-  [
-    "grammar-ja",
-    "grammar-sentence",
-    "grammar-answer",
-    "grammar-hint"
-  ].forEach(x=>{
-    document.getElementById(x).value="";
-  });
+  document.getElementById("grammar-ja").value="";
+  document.getElementById("grammar-en").value="";
 
   editingId=null;
 }
@@ -947,7 +786,6 @@ function clearGrammarForm(){
 function editItem(type,itemId){
 
   const list=type==="word"?data.words:data.grammar;
-
   const q=list.find(x=>x.id===itemId);
 
   if(!q)return;
@@ -964,9 +802,7 @@ function editItem(type,itemId){
   }else{
 
     document.getElementById("grammar-ja").value=q.ja;
-    document.getElementById("grammar-sentence").value=q.sentence;
-    document.getElementById("grammar-answer").value=q.answer;
-    document.getElementById("grammar-hint").value=q.hint||"";
+    document.getElementById("grammar-en").value=q.en;
   }
 
   window.scrollTo(0,0);
@@ -992,32 +828,25 @@ function deleteItem(type,itemId){
 function renderList(){
 
   const list=listTab==="word"?data.words:data.grammar;
-
   const area=document.getElementById("question-list");
 
-  document.getElementById("manage-count").textContent=
-    list.length+"問";
+  document.getElementById("manage-count").textContent=list.length+"問";
 
   area.innerHTML="";
 
   if(!list.length){
-
-    area.innerHTML=
-      '<p class="muted">問題はまだ登録されていません。</p>';
-
+    area.innerHTML='<p class="muted">問題はまだ登録されていません。</p>';
     return;
   }
 
   list.forEach(q=>{
 
     const item=document.createElement("div");
-
     item.className="item";
 
     const title=listTab==="word"
       ?esc(q.en)+" — "+esc(q.ja)
-      :esc(q.ja)+"<br><small>"+esc(q.sentence)+
-       "<br>答え："+esc(q.answer)+"</small>";
+      :esc(q.ja)+"<br><small>正解："+esc(q.en)+"</small>";
 
     item.innerHTML=`
       <div class="item-top">
@@ -1038,8 +867,7 @@ function renderList(){
 
 function renderStats(){
 
-  let attempts=0;
-  let correct=0;
+  let attempts=0,correct=0;
 
   Object.values(data.stats).forEach(s=>{
     attempts+=s.attempts;
@@ -1053,7 +881,6 @@ function renderStats(){
     attempts?Math.round(correct/attempts*100)+"%":"--%";
 
   const area=document.getElementById("mode-stats");
-
   area.innerHTML="";
 
   Object.entries(modeNames).forEach(([mode,name])=>{
@@ -1061,7 +888,6 @@ function renderStats(){
     let a=0,c=0;
 
     Object.entries(data.stats).forEach(([key,s])=>{
-
       if(key.startsWith(mode+":")){
         a+=s.attempts;
         c+=s.correct;
@@ -1088,7 +914,6 @@ function renderStats(){
 function renderWeak(){
 
   const area=document.getElementById("weak-list");
-
   area.innerHTML="";
 
   const all=[];
@@ -1102,13 +927,7 @@ function renderWeak(){
       const s=getStats(mode+":"+q.id);
 
       if(s.wrong>0){
-
-        all.push({
-          mode,
-          q,
-          s,
-          rate:accuracy(s)
-        });
+        all.push({mode,q,s,rate:accuracy(s)});
       }
     });
   });
@@ -1116,10 +935,7 @@ function renderWeak(){
   all.sort((a,b)=>b.s.wrong-a.s.wrong);
 
   if(!all.length){
-
-    area.innerHTML=
-      '<p class="muted">間違えた問題はまだありません。</p>';
-
+    area.innerHTML='<p class="muted">間違えた問題はまだありません。</p>';
     return;
   }
 
@@ -1128,15 +944,12 @@ function renderWeak(){
     const q=x.q;
 
     const name=x.mode==="ja-en"?"日本語 → 英語":
-      x.mode==="en-ja"?"英語 → 日本語":"英文完成";
+      x.mode==="en-ja"?"英語 → 日本語":"日本語 → 英文";
 
     const title=x.mode==="en-ja"?q.en:q.ja;
-
-    const answer=x.mode==="en-ja"?q.ja:
-      x.mode==="grammar"?q.answer:q.en;
+    const answer=x.mode==="en-ja"?q.ja:q.en;
 
     const div=document.createElement("div");
-
     div.className="item";
 
     div.innerHTML=`
@@ -1174,7 +987,6 @@ function exportData(){
   );
 
   const url=URL.createObjectURL(blob);
-
   const a=document.createElement("a");
 
   a.href=url;
@@ -1187,7 +999,6 @@ function exportData(){
 function importData(event){
 
   const file=event.target.files[0];
-
   if(!file)return;
 
   const reader=new FileReader();
@@ -1215,20 +1026,29 @@ function importData(event){
         stats:obj.stats
       };
 
+      // 古い形式の問題も変換
+      data.grammar=data.grammar.map(q=>{
+        if(!q.en&&q.sentence&&q.answer){
+          return {
+            id:q.id,
+            ja:q.ja,
+            en:q.sentence.replace(/____/g,q.answer)
+          };
+        }
+        return q;
+      });
+
       saveData();
 
       alert("データを読み込みました。");
-
       showPage("home");
 
     }catch(e){
-
       alert("正しいバックアップファイルではありません。");
     }
   };
 
   reader.readAsText(file);
-
   event.target.value="";
 }
 
@@ -1239,7 +1059,6 @@ function resetStats(){
   data.stats={};
 
   saveData();
-
   renderStats();
   updateHome();
 
@@ -1254,6 +1073,5 @@ loadData();
 updateHome();
 
 </script>
-
 </body>
 </html>
