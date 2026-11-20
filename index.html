@@ -176,20 +176,45 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
       <input id="answer" type="text" placeholder="答えを入力"
         autocomplete="off" onkeydown="if(event.key==='Enter')checkAnswer()">
       <div class="actions">
-        <button class="primary" onclick="checkAnswer()">回答する</button>
-      </div>
-    </div>
+       function recordAnswer(q, correct){
+  if(answered) return;
+  answered = true;
 
-    <div id="choice-area" class="answer-area hidden"></div>
-    <div id="feedback" class="result"></div>
-    <div id="explanation" class="sub"></div>
+  const key = lastMode + ":" + q.id;
+  const s = getStats(key);
+  s.attempts++;
 
-    <div class="actions">
-      <button id="next-btn" class="primary hidden" onclick="nextQuestion()">次の問題 →</button>
-      <button onclick="showPage('home')">終了する</button>
-    </div>
-  </div>
-</section>
+  if(correct){
+    s.correct++;
+    quizCorrect++;
+  }else{
+    s.wrong++;
+    quizWrong++;
+  }
+
+  saveData();
+
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = correct ? "正解！" : "不正解";
+  feedback.className = "result " + (correct ? "correct" : "wrong");
+
+  let explanation = "";
+
+  if(lastMode === "ja-en"){
+    explanation = "正解：" + q.en;
+  }else if(lastMode === "en-ja"){
+    explanation = "正解：" + q.ja;
+  }else if(lastMode === "grammar"){
+    explanation = "正解：" + q.answer +
+      "\n完成文：" + q.sentence.replace(/____/g, q.answer);
+  }
+
+  document.getElementById("explanation").textContent = explanation;
+
+  document.getElementById("answer").disabled = true;
+
+  document.getElementById("next-btn").classList.remove("hidden");
+}
 
 <!-- 結果 -->
 <section id="page-finish" class="hidden">
