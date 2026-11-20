@@ -5,18 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Vocabulary Master</title>
+
 <style>
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:#f3f5fa;color:#202b42;
+  font-family:Arial,"Noto Sans JP",sans-serif;
+  background:#f3f5fa;
+  color:#202b42;
 }
 header{
   background:#243b67;color:white;
   padding:25px 16px;text-align:center;
 }
-header h1{margin:0;font-size:25px;letter-spacing:1px}
+header h1{margin:0;font-size:25px}
 header p{margin:7px 0 0;color:#dce5fa;font-size:13px}
 nav{
   display:flex;justify-content:center;flex-wrap:wrap;
@@ -30,11 +32,10 @@ button{
   font-size:14px;font-weight:600;cursor:pointer;
 }
 button:hover{filter:brightness(.96)}
-button:disabled{opacity:.45;cursor:not-allowed}
-button.primary{background:#315caa;color:white}
-button.danger{background:#ffe5e5;color:#c03939}
-button.success{background:#d9f4e6;color:#18794e}
-button.active{background:#315caa;color:white}
+button:disabled{opacity:.5;cursor:not-allowed}
+.primary{background:#315caa;color:white}
+.danger{background:#ffe5e5;color:#c03939}
+.active{background:#315caa;color:white}
 main{max-width:850px;margin:25px auto;padding:0 14px}
 .panel{
   background:white;border-radius:15px;padding:22px;
@@ -52,19 +53,24 @@ h3{font-size:16px}
 }
 .mode strong{display:block;font-size:17px;margin:8px 0}
 .mode span{font-size:12px;color:#71809a}
-.big{font-size:35px;font-weight:700;text-align:center;margin:27px 0}
-.question{text-align:center;font-size:27px;font-weight:700;margin:30px 0}
-.sub{text-align:center;color:#8290a5;font-size:13px}
-input,textarea,select{
+.question{
+  text-align:center;font-size:27px;font-weight:700;
+  margin:30px 0;white-space:pre-wrap;
+}
+.sub{text-align:center;color:#8290a5;font-size:13px;white-space:pre-wrap}
+.answer-area{max-width:550px;margin:20px auto}
+input,textarea{
   width:100%;padding:12px;border:1px solid #ccd4e2;
   border-radius:8px;font-size:16px;margin:6px 0 14px;
   background:white;color:#202b42;
 }
 textarea{min-height:75px;resize:vertical}
 label{font-size:13px;font-weight:600}
-.answer-area{max-width:500px;margin:20px auto}
-.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:18px}
-.result{text-align:center;font-size:19px;font-weight:700;margin:18px}
+.actions{
+  display:flex;justify-content:center;gap:9px;
+  flex-wrap:wrap;margin-top:18px;
+}
+.result{text-align:center;font-size:20px;font-weight:700;margin:18px}
 .correct{color:#16834f}
 .wrong{color:#d34444}
 .choice{
@@ -77,17 +83,24 @@ label{font-size:13px;font-weight:600}
   display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
 }
 .stat{
-  background:#f1f4fa;padding:15px 5px;border-radius:10px;text-align:center;
+  background:#f1f4fa;padding:15px 5px;
+  border-radius:10px;text-align:center;
 }
 .stat strong{display:block;font-size:25px;color:#315caa}
 .stat span{font-size:12px;color:#69788f}
-.progress{height:9px;background:#e7ebf2;border-radius:10px;overflow:hidden;margin:10px 0}
+.progress{
+  height:9px;background:#e7ebf2;
+  border-radius:10px;overflow:hidden;margin:10px 0;
+}
 .progress div{height:100%;background:#3baf7b}
 .item{
   border:1px solid #e0e5ed;padding:13px;
   border-radius:10px;margin:10px 0;
 }
-.item-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.item-top{
+  display:flex;justify-content:space-between;
+  gap:10px;align-items:center;
+}
 .item small{color:#738198}
 .muted{color:#7a879b;font-size:13px}
 hr{border:0;border-top:1px solid #e8ebf1;margin:18px 0}
@@ -101,6 +114,7 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -121,17 +135,20 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <section id="page-home">
   <div class="panel">
     <h2>学習モードを選択</h2>
+
     <div class="modes">
       <button class="mode" onclick="startQuiz('ja-en')">
         <div style="font-size:28px">✏️</div>
         <strong>① 日本語 → 英語</strong>
         <span>日本語から英単語を入力</span>
       </button>
+
       <button class="mode" onclick="startQuiz('en-ja')">
         <div style="font-size:28px">📖</div>
         <strong>② 英語 → 日本語</strong>
         <span>英単語の意味を4択で回答</span>
       </button>
+
       <button class="mode" onclick="startQuiz('grammar')">
         <div style="font-size:28px">📝</div>
         <strong>⑤ 英文完成</strong>
@@ -142,7 +159,7 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
   <div class="panel">
     <h2>復習メニュー</h2>
-    <p class="muted">間違えた問題だけをもう一度解き直せます。</p>
+    <p class="muted">間違えた問題だけを再出題します。</p>
     <div class="actions">
       <button class="primary" onclick="startQuiz('ja-en',true)">日→英 間違い復習</button>
       <button class="primary" onclick="startQuiz('en-ja',true)">英→日 間違い復習</button>
@@ -163,69 +180,55 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <!-- クイズ -->
 <section id="page-quiz" class="hidden">
   <div class="panel">
+
     <div class="item-top">
       <span id="quiz-mode" class="muted">学習モード</span>
       <span id="quiz-count" class="muted">0 / 0</span>
     </div>
-    <div class="progress"><div id="quiz-progress" style="width:0%"></div></div>
+
+    <div class="progress">
+      <div id="quiz-progress" style="width:0%"></div>
+    </div>
+
     <p id="quiz-type" class="sub"></p>
     <div id="question" class="question">問題</div>
     <p id="hint" class="sub"></p>
 
     <div id="input-area" class="answer-area">
-      <input id="answer" type="text" placeholder="答えを入力"
-        autocomplete="off" onkeydown="if(event.key==='Enter')checkAnswer()">
+      <input id="answer" type="text"
+        placeholder="答えを入力"
+        autocomplete="off"
+        onkeydown="if(event.key==='Enter')checkAnswer()">
+
       <div class="actions">
-       function recordAnswer(q, correct){
-  if(answered) return;
-  answered = true;
+        <button class="primary" onclick="checkAnswer()">回答する</button>
+      </div>
+    </div>
 
-  const key = lastMode + ":" + q.id;
-  const s = getStats(key);
-  s.attempts++;
+    <div id="choice-area" class="answer-area hidden"></div>
 
-  if(correct){
-    s.correct++;
-    quizCorrect++;
-  }else{
-    s.wrong++;
-    quizWrong++;
-  }
+    <div id="feedback" class="result"></div>
+    <div id="explanation" class="sub"></div>
 
-  saveData();
-
-  const feedback = document.getElementById("feedback");
-  feedback.textContent = correct ? "正解！" : "不正解";
-  feedback.className = "result " + (correct ? "correct" : "wrong");
-
-  let explanation = "";
-
-  if(lastMode === "ja-en"){
-    explanation = "正解：" + q.en;
-  }else if(lastMode === "en-ja"){
-    explanation = "正解：" + q.ja;
-  }else if(lastMode === "grammar"){
-    explanation = "正解：" + q.answer +
-      "\n完成文：" + q.sentence.replace(/____/g, q.answer);
-  }
-
-  document.getElementById("explanation").textContent = explanation;
-
-  document.getElementById("answer").disabled = true;
-
-  document.getElementById("next-btn").classList.remove("hidden");
-}
+    <div class="actions">
+      <button id="next-btn" class="primary hidden" onclick="nextQuestion()">次の問題 →</button>
+      <button onclick="showPage('home')">終了する</button>
+    </div>
+  </div>
+</section>
 
 <!-- 結果 -->
 <section id="page-finish" class="hidden">
   <div class="panel">
     <h2 style="text-align:center">学習終了！</h2>
-    <div class="big" id="finish-score">0 / 0</div>
+    <div class="question" id="finish-score">0 / 0</div>
+
     <div class="stats">
       <div class="stat"><strong id="finish-correct">0</strong><span>正解</span></div>
       <div class="stat"><strong id="finish-wrong">0</strong><span>不正解</span></div>
       <div class="stat"><strong id="finish-rate">0%</strong><span>正答率</span></div>
     </div>
+
     <div class="actions">
       <button class="primary" onclick="showPage('home')">ホームに戻る</button>
       <button onclick="startQuiz(lastMode,lastWrongOnly)">もう一度</button>
@@ -235,21 +238,27 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
 <!-- 問題管理 -->
 <section id="page-manage" class="hidden">
+
   <div class="panel">
     <h2>問題の追加・編集</h2>
-    <p class="muted">ここから自分で問題を登録できます。登録内容は自動保存されます。</p>
+    <p class="muted">問題を登録すると自動保存されます。</p>
+
     <div class="actions">
       <button id="tab-word" class="active" onclick="setManageTab('word')">英単語</button>
       <button id="tab-grammar" onclick="setManageTab('grammar')">英文法</button>
     </div>
+
     <hr>
 
     <div id="word-form">
       <h3>英単語を登録</h3>
+
       <label>英単語</label>
       <input id="word-en" placeholder="例：library">
+
       <label>日本語訳</label>
       <input id="word-ja" placeholder="例：図書館">
+
       <div class="actions">
         <button class="primary" onclick="saveWord()">登録する</button>
         <button onclick="clearWordForm()">入力をクリア</button>
@@ -258,14 +267,19 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 
     <div id="grammar-form" class="hidden">
       <h3>英文法問題を登録</h3>
+
       <label>日本語訳・問題文</label>
       <textarea id="grammar-ja" placeholder="例：私は昨日、図書館に行きました。"></textarea>
+
       <label>空欄を含む英文（空欄は ____ と入力）</label>
       <input id="grammar-sentence" placeholder="例：I ____ to the library yesterday.">
+
       <label>正解（空欄部分）</label>
       <input id="grammar-answer" placeholder="例：went">
+
       <label>ヒント（任意）</label>
       <input id="grammar-hint" placeholder="例：go の過去形">
+
       <div class="actions">
         <button class="primary" onclick="saveGrammar()">登録する</button>
         <button onclick="clearGrammarForm()">入力をクリア</button>
@@ -278,10 +292,12 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
       <h2>登録済みの問題</h2>
       <span id="manage-count" class="muted"></span>
     </div>
+
     <div class="actions">
       <button onclick="setListTab('word')" id="list-word" class="active">英単語一覧</button>
       <button onclick="setListTab('grammar')" id="list-grammar">英文法一覧</button>
     </div>
+
     <div id="question-list"></div>
   </div>
 </section>
@@ -290,23 +306,28 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <section id="page-stats" class="hidden">
   <div class="panel">
     <h2>学習記録・正答率</h2>
+
     <div class="stats">
       <div class="stat"><strong id="stat-attempts">0</strong><span>回答回数</span></div>
       <div class="stat"><strong id="stat-correct">0</strong><span>正解数</span></div>
       <div class="stat"><strong id="stat-rate">--%</strong><span>正答率</span></div>
     </div>
+
     <hr>
     <h3>モード別正答率</h3>
     <div id="mode-stats"></div>
   </div>
+
   <div class="panel">
     <h2>データ管理</h2>
-    <p class="muted">別の端末への移行やバックアップにはJSONファイルを使えます。</p>
+    <p class="muted">JSONファイルでデータをバックアップできます。</p>
+
     <div class="actions">
-      <button class="primary" onclick="exportData()">データを保存（バックアップ）</button>
+      <button class="primary" onclick="exportData()">データを保存</button>
       <button onclick="document.getElementById('import-file').click()">データを読み込む</button>
       <input id="import-file" type="file" accept=".json" class="hidden" onchange="importData(event)">
     </div>
+
     <hr>
     <button class="danger" onclick="resetStats()">学習記録だけをリセット</button>
   </div>
@@ -316,15 +337,17 @@ footer{text-align:center;color:#8792a5;font-size:12px;padding:25px}
 <section id="page-weak" class="hidden">
   <div class="panel">
     <h2>苦手問題一覧</h2>
-    <p class="muted">間違えた回数が多い順に表示します。3回以上間違えた問題には「要復習」と表示します。</p>
+    <p class="muted">間違えた回数が多い順に表示します。</p>
     <div id="weak-list"></div>
   </div>
 </section>
 
 </main>
+
 <footer>ENGLISH VOCABULARY MASTER</footer>
 
 <script>
+
 // =====================================
 // データ管理
 // =====================================
@@ -340,11 +363,13 @@ let data = {
 function loadData(){
   try{
     const saved = localStorage.getItem(STORAGE_KEY);
+
     if(saved){
       const parsed = JSON.parse(saved);
+
       data = {
-        words: Array.isArray(parsed.words)?parsed.words:[],
-        grammar: Array.isArray(parsed.grammar)?parsed.grammar:[],
+        words: Array.isArray(parsed.words) ? parsed.words : [],
+        grammar: Array.isArray(parsed.grammar) ? parsed.grammar : [],
         stats: parsed.stats || {}
       };
     }
@@ -357,7 +382,7 @@ function saveData(){
   try{
     localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
   }catch(e){
-    alert("保存に失敗しました。データの容量をご確認ください。");
+    alert("保存に失敗しました。");
   }
 }
 
@@ -367,14 +392,26 @@ function id(){
 
 function getStats(key){
   if(!data.stats[key]){
-    data.stats[key]={attempts:0,correct:0,wrong:0};
+    data.stats[key]={
+      attempts:0,
+      correct:0,
+      wrong:0
+    };
   }
   return data.stats[key];
 }
 
+function accuracy(s){
+  return s.attempts ? Math.round(s.correct/s.attempts*100) : 0;
+}
+
 function esc(s){
   return String(s??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
   })[c]);
 }
 
@@ -385,17 +422,22 @@ function esc(s){
 const pages=["home","quiz","finish","manage","stats","weak"];
 
 function showPage(name){
+
   pages.forEach(p=>{
-    document.getElementById("page-"+p).classList.toggle("hidden",p!==name);
+    document.getElementById("page-"+p)
+      .classList.toggle("hidden",p!==name);
   });
+
   ["home","manage","stats","weak"].forEach(p=>{
-    const b=document.getElementById("nav-"+p);
-    b.classList.toggle("active",p===name);
+    document.getElementById("nav-"+p)
+      .classList.toggle("active",p===name);
   });
+
   if(name==="home")updateHome();
   if(name==="manage")renderList();
   if(name==="stats")renderStats();
   if(name==="weak")renderWeak();
+
   window.scrollTo(0,0);
 }
 
@@ -403,22 +445,20 @@ function showPage(name){
 // ホーム
 // =====================================
 
-function accuracy(s){
-  return s.attempts?Math.round(s.correct/s.attempts*100):0;
-}
-
 function updateHome(){
+
   document.getElementById("home-total").textContent=
     data.words.length+data.grammar.length;
 
   let total=0,correct=0;
+
   Object.values(data.stats).forEach(s=>{
     total+=s.attempts;
     correct+=s.correct;
   });
 
   document.getElementById("home-accuracy").textContent=
-    total?Math.round(correct/total*100)+"%":"--%";
+    total ? Math.round(correct/total*100)+"%" : "--%";
 
   document.getElementById("home-wrong").textContent=
     Object.values(data.stats).filter(s=>s.wrong>0).length;
@@ -435,8 +475,10 @@ let quizWrong=0;
 let answered=false;
 let lastMode="ja-en";
 let lastWrongOnly=false;
+
 let manageTab="word";
 let listTab="word";
+let editingId=null;
 
 const modeNames={
   "ja-en":"日本語 → 英語",
@@ -445,10 +487,11 @@ const modeNames={
 };
 
 function startQuiz(mode,wrongOnly=false){
+
   lastMode=mode;
   lastWrongOnly=wrongOnly;
 
-  let source=mode==="grammar"?data.grammar:data.words;
+  const source=mode==="grammar"?data.grammar:data.words;
 
   queue=source.filter(q=>{
     const s=getStats(mode+":"+q.id);
@@ -456,11 +499,15 @@ function startQuiz(mode,wrongOnly=false){
   }).map(q=>({...q}));
 
   if(queue.length===0){
-    alert(wrongOnly?"間違えた問題はありません！":"問題が登録されていません。問題管理から追加してください。");
+    alert(
+      wrongOnly
+      ?"間違えた問題はありません！"
+      :"問題が登録されていません。問題管理から追加してください。"
+    );
     return;
   }
 
-  // ランダムに並べ替え
+  // ランダム出題
   for(let i=queue.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
     [queue[i],queue[j]]=[queue[j],queue[i]];
@@ -469,102 +516,192 @@ function startQuiz(mode,wrongOnly=false){
   current=0;
   quizCorrect=0;
   quizWrong=0;
+
   showPage("quiz");
   showQuestion();
 }
 
 function showQuestion(){
+
   answered=false;
+
   const q=queue[current];
 
-  document.getElementById("quiz-mode").textContent=modeNames[lastMode]+(lastWrongOnly?"（間違い復習）":"");
-  document.getElementById("quiz-count").textContent=(current+1)+" / "+queue.length;
+  document.getElementById("quiz-mode").textContent=
+    modeNames[lastMode]+(lastWrongOnly?"（間違い復習）":"");
+
+  document.getElementById("quiz-count").textContent=
+    (current+1)+" / "+queue.length;
+
   document.getElementById("quiz-progress").style.width=
     (current/queue.length*100)+"%";
 
   document.getElementById("feedback").textContent="";
+  document.getElementById("feedback").className="result";
+
   document.getElementById("explanation").textContent="";
   document.getElementById("next-btn").classList.add("hidden");
 
   const input=document.getElementById("input-area");
   const choices=document.getElementById("choice-area");
   const hint=document.getElementById("hint");
+  const answer=document.getElementById("answer");
 
   input.classList.add("hidden");
   choices.classList.add("hidden");
 
+  answer.disabled=false;
+  answer.value="";
+
   if(lastMode==="ja-en"){
-    document.getElementById("quiz-type").textContent="日本語を英語に直してください";
+
+    document.getElementById("quiz-type").textContent=
+      "日本語を英語に直してください";
+
     document.getElementById("question").textContent=q.ja;
     hint.textContent="英単語のスペルを入力してください";
+
     input.classList.remove("hidden");
-    document.getElementById("answer").value="";
-    document.getElementById("answer").focus();
+    answer.placeholder="英単語を入力";
+    answer.focus();
   }
 
   if(lastMode==="en-ja"){
-    document.getElementById("quiz-type").textContent="正しい日本語訳を選んでください";
+
+    document.getElementById("quiz-type").textContent=
+      "正しい日本語訳を選んでください";
+
     document.getElementById("question").textContent=q.en;
     hint.textContent="4つの選択肢から選んでください";
+
     choices.classList.remove("hidden");
     makeChoices(q);
   }
 
   if(lastMode==="grammar"){
-    document.getElementById("quiz-type").textContent="英文を完成させてください";
+
+    document.getElementById("quiz-type").textContent=
+      "英文を完成させてください";
+
     document.getElementById("question").textContent=q.ja;
-    hint.textContent=q.hint||"空欄に入る英語を入力してください";
+
+    hint.textContent=
+      (q.hint ? "ヒント："+q.hint+"\n" : "")+
+      "空欄部分だけ、または完成した英文全体を入力できます。";
+
     input.classList.remove("hidden");
-    document.getElementById("answer").value="";
-    document.getElementById("answer").focus();
-    document.getElementById("explanation").textContent=q.sentence;
+
+    answer.placeholder="空欄の答え、または完成した英文を入力";
+
+    answer.focus();
   }
 }
 
+// =====================================
+// 4択問題
+// =====================================
+
 function makeChoices(q){
+
   const others=data.words.filter(x=>x.id!==q.id);
-  const selected=others.sort(()=>Math.random()-.5).slice(0,3);
-  const options=[q,...selected].sort(()=>Math.random()-.5);
+
+  const selected=others
+    .sort(()=>Math.random()-.5)
+    .slice(0,3);
+
+  const options=[q,...selected]
+    .sort(()=>Math.random()-.5);
 
   const area=document.getElementById("choice-area");
   area.innerHTML="";
+
   options.forEach(option=>{
+
     const btn=document.createElement("button");
+
     btn.className="choice";
     btn.textContent=option.ja;
-    btn.onclick=()=>checkChoice(option.id===q.id,btn,q);
+
+    btn.onclick=()=>{
+      checkChoice(option.id===q.id,q,btn);
+    };
+
     area.appendChild(btn);
   });
 }
 
+// =====================================
+// 回答判定（修正版）
+// =====================================
+
 function normalize(s){
-  return String(s).trim().toLowerCase()
+
+  return String(s)
+    .trim()
+    .toLowerCase()
     .replace(/[’‘]/g,"'")
+    .replace(/[。．]/g,".")
     .replace(/\s+/g," ");
 }
 
 function checkAnswer(){
+
   if(answered)return;
 
   const q=queue[current];
-  const value=document.getElementById("answer").value;
-  if(!value.trim())return;
 
-  const expected=lastMode==="grammar"?q.answer:q.en;
-  const correct=normalize(value)===normalize(expected);
+  const value=document.getElementById("answer").value.trim();
+
+  if(!value){
+    alert("答えを入力してください。");
+    return;
+  }
+
+  let correct=false;
+
+  if(lastMode==="ja-en"){
+
+    correct=normalize(value)===normalize(q.en);
+
+  }else if(lastMode==="grammar"){
+
+    const expectedWord=normalize(q.answer);
+
+    const completeSentence=normalize(
+      q.sentence.replace(/____/g,q.answer)
+    );
+
+    const userAnswer=normalize(value);
+
+    // 空欄部分だけの回答、または英文全体の回答を許可
+    correct=
+      userAnswer===expectedWord ||
+      userAnswer===completeSentence;
+  }
+
   recordAnswer(q,correct);
 }
 
-function checkChoice(correct,btn,q){
+function checkChoice(correct,q,btn){
+
   if(answered)return;
+
   recordAnswer(q,correct);
 }
+
+// =====================================
+// 採点・解説（修正版）
+// =====================================
 
 function recordAnswer(q,correct){
+
+  if(answered)return;
+
   answered=true;
 
   const key=lastMode+":"+q.id;
   const s=getStats(key);
+
   s.attempts++;
 
   if(correct){
@@ -577,38 +714,66 @@ function recordAnswer(q,correct){
 
   saveData();
 
-  document.getElementById("feedback").textContent=
-    correct?"正解！":"不正解";
-  document.getElementById("feedback").className=
+  const feedback=document.getElementById("feedback");
+
+  feedback.textContent=correct?"正解！":"不正解";
+
+  feedback.className=
     "result "+(correct?"correct":"wrong");
 
-  let explanation="正解："+
-    (lastMode==="en-ja"?q.ja:
-     lastMode==="grammar"?q.answer:q.en);
+  let explanation="";
 
-  if(lastMode==="grammar"){
-    explanation+="\n完成文："+q.sentence.replace("____",q.answer);
+  if(lastMode==="ja-en"){
+
+    explanation="正解："+q.en;
+
+  }else if(lastMode==="en-ja"){
+
+    explanation="正解："+q.ja;
+
+  }else if(lastMode==="grammar"){
+
+    const completed=q.sentence.replace(/____/g,q.answer);
+
+    explanation=
+      "正解："+q.answer+
+      "\n\n完成した英文：\n"+completed;
   }
 
-  document.getElementById("explanation").textContent=explanation;
+  document.getElementById("explanation").textContent=
+    explanation;
 
+  // 選択肢を無効化
   if(lastMode==="en-ja"){
+
     const buttons=document.querySelectorAll("#choice-area button");
+
     buttons.forEach(b=>{
+
       b.disabled=true;
-      const correctOption=data.words.find(x=>x.id===q.id);
-      if(correctOption && b.textContent===correctOption.ja){
+
+      if(b.textContent===q.ja){
         b.classList.add("correctChoice");
       }
     });
   }
 
+  // 入力欄を無効化
   document.getElementById("answer").disabled=true;
-  document.getElementById("next-btn").classList.remove("hidden");
+
+  // 次の問題ボタンを表示
+  document.getElementById("next-btn")
+    .classList.remove("hidden");
 }
 
+// =====================================
+// 次の問題・終了
+// =====================================
+
 function nextQuestion(){
+
   current++;
+
   document.getElementById("answer").disabled=false;
 
   if(current>=queue.length){
@@ -619,13 +784,21 @@ function nextQuestion(){
 }
 
 function finishQuiz(){
+
   const total=quizCorrect+quizWrong;
+
   document.getElementById("finish-score").textContent=
     quizCorrect+" / "+total;
-  document.getElementById("finish-correct").textContent=quizCorrect;
-  document.getElementById("finish-wrong").textContent=quizWrong;
+
+  document.getElementById("finish-correct").textContent=
+    quizCorrect;
+
+  document.getElementById("finish-wrong").textContent=
+    quizWrong;
+
   document.getElementById("finish-rate").textContent=
     Math.round(quizCorrect/total*100)+"%";
+
   showPage("finish");
 }
 
@@ -634,93 +807,162 @@ function finishQuiz(){
 // =====================================
 
 function setManageTab(tab){
+
   manageTab=tab;
-  document.getElementById("word-form").classList.toggle("hidden",tab!=="word");
-  document.getElementById("grammar-form").classList.toggle("hidden",tab!=="grammar");
-  document.getElementById("tab-word").classList.toggle("active",tab==="word");
-  document.getElementById("tab-grammar").classList.toggle("active",tab==="grammar");
+
+  document.getElementById("word-form")
+    .classList.toggle("hidden",tab!=="word");
+
+  document.getElementById("grammar-form")
+    .classList.toggle("hidden",tab!=="grammar");
+
+  document.getElementById("tab-word")
+    .classList.toggle("active",tab==="word");
+
+  document.getElementById("tab-grammar")
+    .classList.toggle("active",tab==="grammar");
 }
 
 function setListTab(tab){
+
   listTab=tab;
-  document.getElementById("list-word").classList.toggle("active",tab==="word");
-  document.getElementById("list-grammar").classList.toggle("active",tab==="grammar");
+
+  document.getElementById("list-word")
+    .classList.toggle("active",tab==="word");
+
+  document.getElementById("list-grammar")
+    .classList.toggle("active",tab==="grammar");
+
   renderList();
 }
 
-let editingId=null;
-
 function saveWord(){
+
   const en=document.getElementById("word-en").value.trim();
   const ja=document.getElementById("word-ja").value.trim();
 
-  if(!en||!ja){alert("英単語と日本語訳を入力してください。");return;}
+  if(!en||!ja){
+    alert("英単語と日本語訳を入力してください。");
+    return;
+  }
 
   if(editingId){
+
     const q=data.words.find(x=>x.id===editingId);
-    if(q){q.en=en;q.ja=ja;}
+
+    if(q){
+      q.en=en;
+      q.ja=ja;
+    }
+
   }else{
-    data.words.push({id:id(),en,ja});
+
+    data.words.push({
+      id:id(),
+      en,
+      ja
+    });
   }
 
   saveData();
   clearWordForm();
   renderList();
   updateHome();
+
+  alert("英単語を保存しました。");
 }
 
 function saveGrammar(){
+
   const ja=document.getElementById("grammar-ja").value.trim();
+
   const sentence=document.getElementById("grammar-sentence").value.trim();
+
   const answer=document.getElementById("grammar-answer").value.trim();
+
   const hint=document.getElementById("grammar-hint").value.trim();
 
   if(!ja||!sentence||!answer){
     alert("日本語訳・英文・正解を入力してください。");
     return;
   }
+
   if(!sentence.includes("____")){
     alert("英文に空欄を表す ____ を入れてください。");
     return;
   }
 
   if(editingId){
+
     const q=data.grammar.find(x=>x.id===editingId);
-    if(q){q.ja=ja;q.sentence=sentence;q.answer=answer;q.hint=hint;}
+
+    if(q){
+      q.ja=ja;
+      q.sentence=sentence;
+      q.answer=answer;
+      q.hint=hint;
+    }
+
   }else{
-    data.grammar.push({id:id(),ja,sentence,answer,hint});
+
+    data.grammar.push({
+      id:id(),
+      ja,
+      sentence,
+      answer,
+      hint
+    });
   }
 
   saveData();
   clearGrammarForm();
   renderList();
   updateHome();
+
+  alert("英文法問題を保存しました。");
 }
 
 function clearWordForm(){
+
   document.getElementById("word-en").value="";
   document.getElementById("word-ja").value="";
+
   editingId=null;
 }
 
 function clearGrammarForm(){
-  ["grammar-ja","grammar-sentence","grammar-answer","grammar-hint"]
-    .forEach(x=>document.getElementById(x).value="");
+
+  [
+    "grammar-ja",
+    "grammar-sentence",
+    "grammar-answer",
+    "grammar-hint"
+  ].forEach(x=>{
+    document.getElementById(x).value="";
+  });
+
   editingId=null;
 }
 
 function editItem(type,itemId){
+
   const list=type==="word"?data.words:data.grammar;
+
   const q=list.find(x=>x.id===itemId);
+
   if(!q)return;
 
   editingId=itemId;
+
   setManageTab(type);
 
   if(type==="word"){
+
     document.getElementById("word-en").value=q.en;
     document.getElementById("word-ja").value=q.ja;
+
   }else{
+
     document.getElementById("grammar-ja").value=q.ja;
     document.getElementById("grammar-sentence").value=q.sentence;
     document.getElementById("grammar-answer").value=q.answer;
@@ -731,9 +973,11 @@ function editItem(type,itemId){
 }
 
 function deleteItem(type,itemId){
+
   if(!confirm("この問題を削除しますか？"))return;
 
   const list=type==="word"?"words":"grammar";
+
   data[list]=data[list].filter(x=>x.id!==itemId);
 
   delete data.stats["ja-en:"+itemId];
@@ -746,24 +990,34 @@ function deleteItem(type,itemId){
 }
 
 function renderList(){
+
   const list=listTab==="word"?data.words:data.grammar;
+
   const area=document.getElementById("question-list");
-  document.getElementById("manage-count").textContent=list.length+"問";
+
+  document.getElementById("manage-count").textContent=
+    list.length+"問";
 
   area.innerHTML="";
 
   if(!list.length){
-    area.innerHTML='<p class="muted">問題はまだ登録されていません。</p>';
+
+    area.innerHTML=
+      '<p class="muted">問題はまだ登録されていません。</p>';
+
     return;
   }
 
   list.forEach(q=>{
+
     const item=document.createElement("div");
+
     item.className="item";
 
     const title=listTab==="word"
       ?esc(q.en)+" — "+esc(q.ja)
-      :esc(q.ja)+"<br><small>"+esc(q.sentence)+" / 答え："+esc(q.answer)+"</small>";
+      :esc(q.ja)+"<br><small>"+esc(q.sentence)+
+       "<br>答え："+esc(q.answer)+"</small>";
 
     item.innerHTML=`
       <div class="item-top">
@@ -773,6 +1027,7 @@ function renderList(){
           <button class="danger" onclick="deleteItem('${listTab}','${q.id}')">削除</button>
         </div>
       </div>`;
+
     area.appendChild(item);
   });
 }
@@ -782,7 +1037,10 @@ function renderList(){
 // =====================================
 
 function renderStats(){
-  let attempts=0,correct=0;
+
+  let attempts=0;
+  let correct=0;
+
   Object.values(data.stats).forEach(s=>{
     attempts+=s.attempts;
     correct+=s.correct;
@@ -790,42 +1048,65 @@ function renderStats(){
 
   document.getElementById("stat-attempts").textContent=attempts;
   document.getElementById("stat-correct").textContent=correct;
+
   document.getElementById("stat-rate").textContent=
     attempts?Math.round(correct/attempts*100)+"%":"--%";
 
   const area=document.getElementById("mode-stats");
+
   area.innerHTML="";
 
   Object.entries(modeNames).forEach(([mode,name])=>{
+
     let a=0,c=0;
+
     Object.entries(data.stats).forEach(([key,s])=>{
+
       if(key.startsWith(mode+":")){
-        a+=s.attempts;c+=s.correct;
+        a+=s.attempts;
+        c+=s.correct;
       }
     });
+
     const rate=a?Math.round(c/a*100):0;
+
     area.innerHTML+=`
       <div class="item">
         <strong>${name}</strong>
-        <div class="progress"><div style="width:${rate}%"></div></div>
+        <div class="progress">
+          <div style="width:${rate}%"></div>
+        </div>
         <small>${a?rate+"%（"+c+"/"+a+"）":"未学習"}</small>
       </div>`;
   });
 }
 
+// =====================================
+// 苦手問題
+// =====================================
+
 function renderWeak(){
+
   const area=document.getElementById("weak-list");
+
   area.innerHTML="";
 
   const all=[];
 
   ["ja-en","en-ja","grammar"].forEach(mode=>{
+
     const list=mode==="grammar"?data.grammar:data.words;
+
     list.forEach(q=>{
+
       const s=getStats(mode+":"+q.id);
+
       if(s.wrong>0){
+
         all.push({
-          mode,q,s,
+          mode,
+          q,
+          s,
           rate:accuracy(s)
         });
       }
@@ -835,32 +1116,48 @@ function renderWeak(){
   all.sort((a,b)=>b.s.wrong-a.s.wrong);
 
   if(!all.length){
-    area.innerHTML='<p class="muted">間違えた問題はまだありません。</p>';
+
+    area.innerHTML=
+      '<p class="muted">間違えた問題はまだありません。</p>';
+
     return;
   }
 
   all.forEach(x=>{
+
     const q=x.q;
+
     const name=x.mode==="ja-en"?"日本語 → 英語":
       x.mode==="en-ja"?"英語 → 日本語":"英文完成";
 
     const title=x.mode==="en-ja"?q.en:q.ja;
+
     const answer=x.mode==="en-ja"?q.ja:
       x.mode==="grammar"?q.answer:q.en;
 
     const div=document.createElement("div");
+
     div.className="item";
+
     div.innerHTML=`
       <div class="item-top">
         <strong>${esc(title)}</strong>
-        ${x.s.wrong>=3?'<span style="color:#d34444;font-size:12px;font-weight:bold">要復習</span>':""}
+        ${x.s.wrong>=3?
+          '<span style="color:#d34444;font-size:12px;font-weight:bold">要復習</span>':""}
       </div>
       <p class="muted">${name}</p>
       <p>正解：<strong>${esc(answer)}</strong></p>
-      <small>間違い：${x.s.wrong}回 / 回答：${x.s.attempts}回 / 正答率：${x.rate}%</small>
+      <small>
+        間違い：${x.s.wrong}回 /
+        回答：${x.s.attempts}回 /
+        正答率：${x.rate}%
+      </small>
       <div class="actions">
-        <button class="primary" onclick="startQuiz('${x.mode}',true)">この形式で復習</button>
+        <button class="primary" onclick="startQuiz('${x.mode}',true)">
+          この形式で復習
+        </button>
       </div>`;
+
     area.appendChild(div);
   });
 }
@@ -870,50 +1167,82 @@ function renderWeak(){
 // =====================================
 
 function exportData(){
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+
+  const blob=new Blob(
+    [JSON.stringify(data,null,2)],
+    {type:"application/json"}
+  );
+
   const url=URL.createObjectURL(blob);
+
   const a=document.createElement("a");
+
   a.href=url;
   a.download="english-master-backup.json";
   a.click();
+
   URL.revokeObjectURL(url);
 }
 
 function importData(event){
+
   const file=event.target.files[0];
+
   if(!file)return;
 
   const reader=new FileReader();
+
   reader.onload=()=>{
+
     try{
+
       const obj=JSON.parse(reader.result);
-      if(!Array.isArray(obj.words)||!Array.isArray(obj.grammar)||
-         !obj.stats||typeof obj.stats!=="object"){
+
+      if(
+        !Array.isArray(obj.words)||
+        !Array.isArray(obj.grammar)||
+        !obj.stats||
+        typeof obj.stats!=="object"
+      ){
         throw new Error();
       }
+
       if(!confirm("現在のデータを読み込んだデータで置き換えますか？"))return;
+
       data={
         words:obj.words,
         grammar:obj.grammar,
         stats:obj.stats
       };
+
       saveData();
+
       alert("データを読み込みました。");
+
       showPage("home");
+
     }catch(e){
+
       alert("正しいバックアップファイルではありません。");
     }
   };
+
   reader.readAsText(file);
+
   event.target.value="";
 }
 
 function resetStats(){
+
   if(!confirm("学習記録をすべてリセットしますか？問題データは残ります。"))return;
+
   data.stats={};
+
   saveData();
+
   renderStats();
   updateHome();
+
   alert("学習記録をリセットしました。");
 }
 
@@ -923,6 +1252,8 @@ function resetStats(){
 
 loadData();
 updateHome();
+
 </script>
+
 </body>
 </html>
